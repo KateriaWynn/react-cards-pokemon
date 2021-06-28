@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import PokemonSelect from './PokemonSelect';
 import PokemonCard from './PokemonCard';
-import { useAxios2 } from './hooks';
+import { useAxios } from './hooks';
 import './PokeDex.css';
 
 /* Renders a list of pokemon cards.
  * Can also add a new card at random,
  * or from a dropdown of available pokemon. */
 function PokeDex() {
-  const [pokemon, addPokemon] = useAxios2(
-    'https://pokeapi.co/api/v2/pokemon',
-    'pikachu'
-  );
-  console.log(pokemon);
+  const [pokemon, addPokemon] = useAxios('https://pokeapi.co/api/v2/pokemon/');
 
   return (
     // <h1>This is a test</h1>
