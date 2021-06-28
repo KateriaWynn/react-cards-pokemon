@@ -12,30 +12,20 @@ const useFlip = (initialState = true) => {
   return [isFacingUp, flipCard];
 };
 
-/* Used for making an AJAX request with axios v1*/
-const useAxios1 = (url) => {
-  const [data, setData] = useState(url);
+/* Used for making an AJAX request with axios */
 
-  const addData = async () => {
+const useAxios = (url) => {
+  const [data, setData] = useState([]);
+
+  const addData = async (subUrl) => {
+    if (subUrl) {
+      url += subUrl;
+    }
+
     const response = await axios.get(url);
     setData((data) => [...data, { ...response.data, id: uuid() }]);
   };
-
-  return [data.slice(45, data.length), addData];
+  return [data, addData];
 };
 
-/* Used for making an AJAX request with axios v2,
- * with rest of url */
-
-function useAxios2(baseUrl, restOfUrl) {
-  const [data, setData] = useState(baseUrl, restOfUrl);
-
-  const addData = async () => {
-    const response = await axios.get(`${baseUrl}` + '/' + `${restOfUrl}`);
-    setData((data) => [...data, response.data]);
-  };
-
-  return [data.slice(34, data.length), addData];
-}
-
-export { useFlip, useAxios1, useAxios2 };
+export { useFlip, useAxios };
