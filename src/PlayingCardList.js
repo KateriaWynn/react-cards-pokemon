@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PlayingCard from './PlayingCard';
-import { useAxios1 } from './hooks';
+import { useAxios } from './hooks';
 import './PlayingCardList.css';
 
 /* Renders a list of playing cards.
  * Can also add a new card at random. */
 function CardTable() {
-  let [cards, addCard] = useAxios1(
+  let [cards, addCard] = useAxios(
     'https://deckofcardsapi.com/api/deck/new/draw/'
   );
 
