@@ -11,7 +11,6 @@ function PokeDex() {
   const [pokemon, addPokemon] = useAxios('https://pokeapi.co/api/v2/pokemon/');
 
   return (
-    // <h1>This is a test</h1>
     <div className="PokeDex">
       <div className="PokeDex-buttons">
         <h3>Please select your pokemon:</h3>
